@@ -1,0 +1,32 @@
+
+Instructions for execution:
+
+
+1: set path
+PATH=pathToProject/android-toolchain/bin/:$PATH
+
+example:
+PATH=/home/gfont/androidHelib/android-toolchain/bin/:$PATH
+
+
+2: compile AndroidAntennaEncryptor.cpp to aae
+
+arm-linux-androideabi-g++ AndroidAntennaEncryptor.cpp fhe.a -std=c++11 -lstdc++ -lgmp -lntl -lm -static -L/home/gfont/androidHelib/android/lib/ -I/home/gfont/androidHelib/android/include/ -I/home/gfont/androidHelib/HElib/src/ -o aae
+
+
+3: connect mobile device in debug mode
+
+4: push files to mobile device
+
+adb push aae /data/local/tmp/
+adb push a_1_hash /data/local/tmp/
+adb push key.pub /data/local/tmp/
+adb push context /data/local/tmp/
+
+5: run from terminal emulator on mobile device or adb shell
+/data/local/tmp/aae
+
+
+
+
+
